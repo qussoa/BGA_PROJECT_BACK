@@ -1,0 +1,20 @@
+package com.biz.bow;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import com.biz.bow.sevice.PlayerService;
+
+public class PlyaerTest {
+
+	@Test
+	public void 플레이어_이름_생성_확인() {
+		try {
+			PlayerService player = new PlayerService("박지민"); 
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+
+}

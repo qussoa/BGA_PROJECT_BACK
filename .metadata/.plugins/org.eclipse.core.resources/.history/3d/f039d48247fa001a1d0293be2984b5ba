@@ -1,0 +1,41 @@
+package com.biz.bow;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import com.biz.bow.sevice.FrameService;
+
+public class FrameTest {
+	
+	private FrameService nomalFrame;
+	private FrameService finalFrame;
+	
+	// Test annotation보다 먼저 실행
+	@Before
+	public void setUp(){
+		nomalFrame = new FrameService(0);
+		finalFrame = new FrameService(9);
+	}
+	
+	@Test
+	public void 점수_계산_후_턴_확인() {
+		nomalFrame.calScore(1);
+		nomalFrame.calScore(2);
+		assertThat(nomalFrame.playerTurn(),is(false));
+		
+	}
+
+	public void 마지막_프레임_턴_3번투구_가능() {
+		finalFrame.calScore(0);
+		finalFrame.calScore(0);
+		
+		assertThat(finalFrame.playerTurn(), is(true));
+		
+		finalFrame.calScore(0);
+		
+		assertThat(finalFrame.playerTurn(),is(false));
+	}
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.lang.reflect.Method"/>
+<fullyQualifiedTypeName name="com.biz.bow.PlyaerTest"/>
+<fullyQualifiedTypeName name="java.awt.Frame"/>
+<fullyQualifiedTypeName name="com.biz.bow.NomalFrameTest"/>
+<fullyQualifiedTypeName name="org.junit.Test"/>
+<fullyQualifiedTypeName name="org.junit.Before"/>
+<fullyQualifiedTypeName name="com.biz.bow.sevice.ScoreService"/>
+<fullyQualifiedTypeName name="java.lang.NoSuchFieldException"/>
+<fullyQualifiedTypeName name="java.lang.IllegalAccessException"/>
+<fullyQualifiedTypeName name="java.lang.reflect.Field"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="org.apache.ibatis.javassist.bytecode.analysis.Frame"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.biz.bow.sevice.PlayerService"/>
+<fullyQualifiedTypeName name="com.biz.bow.sevice.ViewService"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.biz.bow.sevice.PinsService"/>
+<fullyQualifiedTypeName name="com.biz.bow.sevice.NmlFrameServiveImpl"/>
+<fullyQualifiedTypeName name="com.biz.bow.sevice.FrameService"/>
+<fullyQualifiedTypeName name="com.biz.bow.sevice.FinalFrameServiceImpl"/>
+</qualifiedTypeNameHistroy>

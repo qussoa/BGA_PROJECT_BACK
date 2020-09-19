@@ -1,0 +1,10 @@
+package com.biz.bow.sevice;
+
+public interface FrameService {
+	
+	// 턴인가 아닌가
+	boolean playTurn();
+	
+	// 턴을 계산
+	void deductTurn();
+}

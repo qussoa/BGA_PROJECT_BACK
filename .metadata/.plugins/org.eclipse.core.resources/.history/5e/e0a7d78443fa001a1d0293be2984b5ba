@@ -1,0 +1,15 @@
+package com.biz.bow.sevice;
+
+public class FrameService {
+	// 점수계산, 플레이어의 차례, 볼링 핀의 상태 체크
+	
+	// 점수계산
+	public void calScore() {
+		
+	}
+	
+	// 플레이어 차례
+	public void playerTurn() {
+		
+	}
+}

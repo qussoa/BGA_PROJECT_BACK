@@ -1,0 +1,9 @@
+package com.biz.bow.sevice;
+
+public class PinService {
+
+	// 플레이어가 공을 던지는 메시지 수신
+	public void rollingBall() {
+
+	}
+}

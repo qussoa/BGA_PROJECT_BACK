@@ -1,0 +1,52 @@
+package com.biz.bow.sevice;
+
+// 점수 계산
+public class ScoreService {
+
+	private static final int FINAL_FRAME = 3;
+	// 1~9번째 프레임 첫 투구
+	private static final int NOML_FRAME_FST_TURN = 2;
+
+	// 마지막 프레임의 첫 투구
+	private static final int FINAL_FRAME_FST_TURN = 3;
+	// 마지막 프레임의 두번째 투구
+	private static final int FINAL_FRAME_SND_TURN = 2;
+
+	private int fstShot;
+	private int sndShot;
+	private int finalShot;
+
+	public ScoreService(int frameState) {
+		fstShot = 0;
+		sndShot = 0;
+
+		// 프레임스테이트가 마지막 프레임이면 0 아니면 -1을
+		// 마지막 샷에 저장
+		finalShot = frameState == FINAL_FRAME ? 0 : -1;
+	}
+
+	public void setScore(int pinCnt, int turn) {
+		if (finalShot != -1) {
+			fnlFrameSetScore(pinCnt, turn);
+			return;
+		}
+		nmlFrameSetScore(pinCnt, turn);
+	}
+
+	// 점수 총점
+	public int getTotalScore() {
+		return fstShot + sndShot + fstShot;
+	}
+
+	public boolean hasFinalTurn() {
+		return fstShot + sndShot >= 10;
+	}
+
+	private void fnlFrameSetScore(int pinCnt, int turn) {
+
+	}
+
+	private void nmlFrameSetScore(int pinCnt, int turn) {
+
+	}
+}

@@ -1,0 +1,25 @@
+package com.biz.bow;
+
+import static org.junit.Assert.fail;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import com.biz.bow.sevice.FinalFrameServiceImpl;
+import com.biz.bow.sevice.FrameService;
+
+public class FinalFrameTest {
+	
+	private FrameService finalFrame;
+
+	@Before
+	public void setUp() {
+		finalFrame = new FinalFrameServiceImpl();
+	}
+	
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,14 @@
+package com.biz.bow;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class NomalFrameTest {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}
