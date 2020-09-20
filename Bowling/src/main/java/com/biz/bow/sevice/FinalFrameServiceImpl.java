@@ -17,21 +17,25 @@ public class FinalFrameServiceImpl implements FrameService {
 		score = new ScoreService(turn);
 	}
 	
+	// 한 프레임 점수
 	@Override
 	public int[] getScore() {
 		return score.getShotScore();
 	}
 
+	// 총점
 	@Override
 	public int getTotalScore() {
 		return score.getTotalScore();
 	}
 
+	// 몇번째 프레임
 	@Override
 	public int getFramenumber() {
 		return frameNum;
 	}
 
+	// 한프레임의 상태
 	@Override
 	public String getState() {
 		return score.getState();
@@ -43,16 +47,19 @@ public class FinalFrameServiceImpl implements FrameService {
 		return turn > 0; 
 	}
 	
+	// 한프레임의 점수와 턴 
 	@Override
 	public void playBow(int pinCnt) {
 		setScore(pinCnt);
 		setTurn();
 	}
 	
+	// 점수설정
 	private void setScore(int pinCnt) {
 		score.setScore(pinCnt, turn);
 	}	
 	
+	// 턴 설정
 	private void setTurn() {
 		if(turn == SECOND_TURN && !score.hasFinalTurn()) {
 			turn -=2;

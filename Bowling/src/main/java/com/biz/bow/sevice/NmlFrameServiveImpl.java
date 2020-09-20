@@ -57,6 +57,7 @@ public class NmlFrameServiveImpl implements FrameService {
 	
 	// 턴
 	private void setTurn(int pinCnt) {
+		score.calState();
 		// 핀 카운트가 10이 되면 투구를 없앰
 		if (pinCnt == TOTAL_PIN) {
 			turn -= 2;

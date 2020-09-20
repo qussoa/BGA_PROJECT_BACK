@@ -10,5 +10,9 @@ public class PlayerService {
 		// TODO Auto-generated constructor stub
 		this.name = name;
 	}
+	
+	public String getName() {
+		return name;
+	}
 
 }

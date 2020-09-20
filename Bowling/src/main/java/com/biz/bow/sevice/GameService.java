@@ -24,7 +24,7 @@ public class GameService {
 		for(FrameService frame : frames) {
 			playGame(frame);
 		}
-		//view.showBowGame(frames, player);
+		view.showBowGame(frames, player);
 	}
 	
 	private void playGame(FrameService frame) {

@@ -13,11 +13,12 @@ public class PinsService {
 
 	// 플레이어가 공을 던지는 메시지 수신
 	public int rollingBall() {	
-		int rndNum = (int) (Math.random() + MAX_BOW_PIN +1);
+		int rndNum = (int)(Math.random() * bowPins) +1;
 		hitBowPin(rndNum);
 		return rndNum;
 	}
 	
+	// 다음 판 프레임 초기화 세팅
 	public void resetPin() {
 		this.bowPins = MAX_BOW_PIN;
 	}
