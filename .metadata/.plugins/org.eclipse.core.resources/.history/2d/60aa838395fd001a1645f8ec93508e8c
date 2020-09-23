@@ -1,0 +1,17 @@
+package com.biz.bow.controller;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@CrossOrigin("*")
+@RestController
+public class BwgController {
+
+	
+	@GetMapping("/Test")
+	public String home() {
+		
+		return "Hello";
+	}
+}

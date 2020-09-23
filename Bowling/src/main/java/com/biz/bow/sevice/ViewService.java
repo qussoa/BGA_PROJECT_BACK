@@ -2,6 +2,8 @@ package com.biz.bow.sevice;
 
 import java.util.List;
 
+import com.biz.bow.domain.FrameVO;
+
 public class ViewService {
 	// 콘솔로 보여주는 곳
 	
@@ -34,6 +36,9 @@ public class ViewService {
 			setScore(frame.getScore(), frame.getState());
 			setTotalScore(resultScore.getTotalScore());
 		}
+		
+		FrameVO frame = new FrameVO();
+		
 		System.out.println("Player : " + player.getName());
 		System.out.println(round);
 		System.out.println(score);

@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class FrameVO {
 
-	private List<Integer> turnScore;
+	private int[] turnScore;
 	private int frameScore;
 	
 }
