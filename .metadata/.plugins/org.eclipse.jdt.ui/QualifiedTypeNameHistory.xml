@@ -21,7 +21,11 @@
 <fullyQualifiedTypeName name="com.biz.bow.sevice.FrameService"/>
 <fullyQualifiedTypeName name="com.biz.bow.sevice.GameService"/>
 <fullyQualifiedTypeName name="com.biz.bow.sevice.PlayerService"/>
-<fullyQualifiedTypeName name="lombok.Getter"/>
 <fullyQualifiedTypeName name="lombok.Data"/>
 <fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="lombok.Setter"/>
+<fullyQualifiedTypeName name="lombok.Getter"/>
+<fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
+<fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
+<fullyQualifiedTypeName name="lombok.ToString"/>
 </qualifiedTypeNameHistroy>

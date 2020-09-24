@@ -1,7 +1,10 @@
 package com.biz.bow.sevice;
 
+import com.biz.bow.domain.PlayerVO;
+
 public class PlayerService {
-	// player 확인 
+	
+	// 플레이어의 정보를 설정해주는 클래스
 	
 	private String name;
 	
@@ -12,6 +15,8 @@ public class PlayerService {
 	}
 	
 	public String getName() {
+		PlayerVO playerVO = new PlayerVO();
+		
 		return name;
 	}
 

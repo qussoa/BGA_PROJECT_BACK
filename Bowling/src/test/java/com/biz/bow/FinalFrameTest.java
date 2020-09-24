@@ -16,7 +16,7 @@ public class FinalFrameTest {
 
 	@Before
 	public void setUp() {
-		finalFrame = new FinalFrameServiceImpl();
+		//finalFrame = new FinalFrameServiceImpl();
 	}
 	
 	@Test

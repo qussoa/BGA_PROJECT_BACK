@@ -1,0 +1,18 @@
+package com.biz.bow.domain;
+
+import java.util.List;
+
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+@Data
+@Setter
+@Getter
+public class PlayerVO {
+	
+	private String name;
+	private List<FrameVO> frameList;
+	private int totalScore;
+	
+}

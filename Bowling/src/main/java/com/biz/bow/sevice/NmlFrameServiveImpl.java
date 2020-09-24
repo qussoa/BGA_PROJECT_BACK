@@ -16,22 +16,26 @@ public class NmlFrameServiveImpl implements FrameService {
 		score = new ScoreService(turn);
 	}
 	
+	// 보통의 프레임의 점수를 내보낼 메서드
 	@Override
 	public int[] getScore() {
 		return score.getShotScore();
 	}
 
 	
+	// 총점을 내보낼 메서드
 	@Override
 	public int getTotalScore() {
 		return score.getTotalScore();
 	}
 
+	// 몇번째 프레임인가를 내보낼 메서드
 	@Override
 	public int getFramenumber() {
 		return frameNum;
 	}
 
+	// 스트라이크인가 스페어인가를 내보낼 메서드
 	@Override
 	public String getState() {
 		return score.getState();
@@ -44,6 +48,7 @@ public class NmlFrameServiveImpl implements FrameService {
 		return turn > 0;
 	}
 
+	// 한 프레임의 점수와 턴을 담는 메서드
 	@Override
 	public void playBow(int pinCnt) {
 		setScore(pinCnt);
@@ -51,6 +56,7 @@ public class NmlFrameServiveImpl implements FrameService {
 
 	}
 
+	// 한턴에 점수를 담음
 	public void setScore(int pinCnt) {
 		score.setScore(pinCnt, turn);
 	}

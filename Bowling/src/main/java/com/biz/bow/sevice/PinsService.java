@@ -2,6 +2,8 @@ package com.biz.bow.sevice;
 
 public class PinsService {
 	
+	// 랜덤으로 핀을 설정해주는 클래스 
+	
 	// 한 프레임에 볼링핀은 10개
 	private static final int MAX_BOW_PIN = 10;
 	

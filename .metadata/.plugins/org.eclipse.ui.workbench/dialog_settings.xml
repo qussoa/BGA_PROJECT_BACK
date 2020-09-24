@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="WorkbenchPreferenceDialogSettings">
-		<item key="DIALOG_X_ORIGIN" value="651"/>
-		<item key="DIALOG_Y_ORIGIN" value="158"/>
-	</section>
-	<section name="PreferencesExportWizard">
-	</section>
-	<section name="PreferencesImportWizard">
-		<item key="" value="C:\bizwork\needs\my_sts_setting.epf"/>
-		<list key="WizardPreferencesExportPage1.STORE_DESTINATION_NAMES_ID">
-			<item value="C:\bizwork\needs\my_sts_setting.epf"/>
-		</list>
+		<item value="213" key="DIALOG_X_ORIGIN"/>
+		<item value="244" key="DIALOG_Y_ORIGIN"/>
 	</section>
 	<section name="org.eclipse.ui.internal.QuickAccess">
-		<item key="dialogHeight" value="950"/>
-		<item key="dialogWidth" value="1161"/>
+		<item value="950" key="dialogHeight"/>
+		<item value="1161" key="dialogWidth"/>
+		<list key="textEntries">
+		</list>
 		<list key="orderedElements">
 		</list>
 		<list key="orderedProviders">
 		</list>
-		<list key="textEntries">
-		</list>
 		<list key="textArray">
 		</list>
 	</section>
+	<section name="PreferencesImportWizard">
+		<item value="C:\bizwork\needs\my_sts_setting.epf" key=""/>
+		<list key="WizardPreferencesExportPage1.STORE_DESTINATION_NAMES_ID">
+			<item value="C:\bizwork\needs\my_sts_setting.epf"/>
+		</list>
+	</section>
 	<section name="NewWizardAction">
+	</section>
+	<section name="PreferencesExportWizard">
 	</section>
 </section>

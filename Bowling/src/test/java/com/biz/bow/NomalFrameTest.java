@@ -15,7 +15,7 @@ public class NomalFrameTest {
 	
 	@Before
 	public void setUp() {
-		nmlFrame = new NmlFrameServiveImpl();
+	//	nmlFrame = new NmlFrameServiveImpl();
 	}
 	
 

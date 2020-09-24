@@ -22,15 +22,15 @@ public class FrameTest {
 	
 	@Test
 	public void 점수_계산_후_턴_확인() {
-		nomalFrame.setScore(1);
+		//nomalFrame.setScore(1);
 //		nomalFrame.calScore(2);
 		assertThat(nomalFrame.playerTurn(),is(false));
 		
 	}
 
 	public void 마지막_프레임_턴_3번투구_가능() {
-		finalFrame.setScore(0);
-		finalFrame.setScore(0);
+	//	finalFrame.setScore(0);
+	//	finalFrame.setScore(0);
 		
 		assertThat(finalFrame.playerTurn(), is(true));
 

@@ -2,12 +2,18 @@ package com.biz.bow.sevice;
 
 public class FinalFrameServiceImpl implements FrameService {
 
+	// 마지막 프레임은 3번의 기회를 줌
 	private static final int FINAL_FRAME = 3;
+	
+	// 스페어나 스트라이크를 넣지 못했을 경우 2번의 턴만 가짐
 	private static final int SECOND_TURN = 2;
 
-
+	// 한 프레임의 턴
 	private int turn;
+	// 점수를 불러오는 곳
 	private ScoreService score;
+	
+	// 몇번째 프레임인가 변수로 선언
 	private int frameNum;
 	
 	// 초기화

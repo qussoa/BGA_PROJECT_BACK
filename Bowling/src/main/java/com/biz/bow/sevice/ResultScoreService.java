@@ -17,6 +17,7 @@ public class ResultScoreService {
 		totalScore = 0;
 	}
 	
+	// 점수 내보낼때
 	public int getTotalScore() {
 		return totalScore;
 	}
@@ -26,11 +27,22 @@ public class ResultScoreService {
 		totalScore += Arrays.stream(shotScores).sum();
 	}
 	
+	// 현재 프레임에서 스트라이크나 스페어가 나왔을시에 다음 프레임에서 점수를 한번더 더함
 	public void calScoreWithNextFrame(String state, FrameService nextFrame) {
 		if(state.equals("STRIKE")) {
-			int nextFrameScore = nextFrame.getTotalScore();
-			totalScore += nextFrameScore;
-			return;
+			if(nextFrame.getFramenumber() == 10) {
+				int nextFrameScore = nextFrame.getScore()[0];
+				int[] nextFirstSocre = nextFrame.getScore();
+				totalScore += nextFrameScore;
+				totalScore += nextFirstSocre[FIRST_TURN_GET_SCORE];
+				return;
+			}else {
+				int nextFrameScore = nextFrame.getTotalScore();
+				int[] nextFirstSocre = nextFrame.getScore();
+				totalScore += nextFrameScore;
+				totalScore += nextFirstSocre[FIRST_TURN_GET_SCORE];
+				return;
+			}
 		}
 		
 		if(state.equals("SPAIRE")) {
