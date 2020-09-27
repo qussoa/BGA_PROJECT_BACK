@@ -161,7 +161,7 @@ public class ScoreTest {
 		}
 	
 		PlayerVO playerVO = game.startGame(inputScoreList);
-		assertThat(playerVO.getTotalScore(),is(150));
+		assertThat(playerVO.getTotalScore(),is(145));
 	}
 
 }

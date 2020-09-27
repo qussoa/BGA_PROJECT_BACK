@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ScoreTest" project="Bowling" tests="7" started="7" failures="1" errors="0" ignored="0">
+  <testsuite name="com.biz.bow.ScoreTest" time="0.043">
+    <testcase name="마지막_프레임_스트라이크_스페어_획득_실패시" classname="com.biz.bow.ScoreTest" time="0.002"/>
+    <testcase name="마지막_프레임_스페어" classname="com.biz.bow.ScoreTest" time="0.0"/>
+    <testcase name="노말_프레임_점수_저장_확인" classname="com.biz.bow.ScoreTest" time="0.0"/>
+    <testcase name="마지막_프레임_점수_저장" classname="com.biz.bow.ScoreTest" time="0.0"/>
+    <testcase name="모든_점수가_스페어일_경우" classname="com.biz.bow.ScoreTest" time="0.04">
+      <failure>java.lang.AssertionError: 
+Expected: is &lt;145&gt;
+     got: &lt;150&gt;
+&#13;
+	at org.junit.Assert.assertThat(Assert.java:778)&#13;
+	at org.junit.Assert.assertThat(Assert.java:736)&#13;
+	at com.biz.bow.ScoreTest.모든_점수가_스페어일_경우(ScoreTest.java:164)&#13;
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)&#13;
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.lang.reflect.Method.invoke(Method.java:498)&#13;
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)&#13;
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)&#13;
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:76)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)&#13;
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)&#13;
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)&#13;
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)&#13;
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)&#13;
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:538)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:760)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:460)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:206)&#13;
+&#13;
+</failure>
+    </testcase>
+    <testcase name="모든_점수가_스트라이크일때" classname="com.biz.bow.ScoreTest" time="0.0"/>
+    <testcase name="마지막_프레임_스트라이크" classname="com.biz.bow.ScoreTest" time="0.001"/>
+  </testsuite>
+</testrun>
