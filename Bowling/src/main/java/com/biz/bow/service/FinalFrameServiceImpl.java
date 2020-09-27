@@ -1,0 +1,77 @@
+package com.biz.bow.service;
+
+public class FinalFrameServiceImpl implements FrameService {
+
+	// 마지막 프레임은 3번의 기회를 줌
+	private static final int FINAL_FRAME = 3;
+	
+	// 스페어나 스트라이크를 넣지 못했을 경우 2번의 턴만 가짐
+	private static final int SECOND_TURN = 2;
+
+	// 한 프레임의 턴
+	private int turn;
+	// 점수를 불러오는 곳
+	private ScoreService score;
+	
+	// 몇번째 프레임인가 변수로 선언
+	private int frameNum;
+	
+	// 초기화
+	public FinalFrameServiceImpl(int frameNum) {
+		this.frameNum = frameNum;
+		turn = FINAL_FRAME;
+		score = new ScoreService(turn);
+	}
+	
+	// 한 프레임 점수
+	@Override
+	public int[] getScore() {
+		return score.getShotScore();
+	}
+
+	// 총점
+	@Override
+	public int getTotalScore() {
+		return score.getTotalScore();
+	}
+
+	// 몇번째 프레임
+	@Override
+	public int getFramenumber() {
+		return frameNum;
+	}
+
+	// 한프레임의 상태
+	@Override
+	public String getState() {
+		return score.getState();
+	}
+
+	// 턴 횟수
+	@Override
+	public boolean playerTurn() {
+		return turn > 0; 
+	}
+	
+	// 한프레임의 점수와 턴 
+	@Override
+	public void playBow(int pinCnt) {
+		setScore(pinCnt);
+		setTurn();
+	}
+	
+	// 점수설정
+	private void setScore(int pinCnt) {
+		score.setScore(pinCnt, turn);
+	}	
+	
+	// 턴 설정
+	private void setTurn() {
+		if(turn == SECOND_TURN && !score.hasFinalTurn()) {
+			turn -=2;
+		}
+		turn --;
+	}
+
+
+}

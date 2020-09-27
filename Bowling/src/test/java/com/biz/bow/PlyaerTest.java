@@ -7,7 +7,7 @@ import java.lang.reflect.Field;
 
 import org.junit.Test;
 
-import com.biz.bow.sevice.PlayerService;
+import com.biz.bow.service.PlayerService;
 
 public class PlyaerTest {
 

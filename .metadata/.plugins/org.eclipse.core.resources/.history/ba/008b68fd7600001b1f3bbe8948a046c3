@@ -1,0 +1,36 @@
+package com.biz.bow.sevice;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.biz.bow.dao.BowDao;
+import com.biz.bow.domain.PlayerVO;
+
+@Service
+public class RecordService {
+	
+
+	private BowDao bDao;
+	
+	@Autowired
+	public RecordService() {
+
+		bDao = this.bDao;
+	}
+	
+	public List<PlayerVO> selectAll(){
+		return bDao.selectAll();
+	}
+	
+	public PlayerVO findByPlayerName(String playerName) {
+		PlayerVO playerVO = bDao.findPlayerName(playerName);
+		return playerVO;
+	}
+	
+	public int insert(PlayerVO playerVO) {
+		int ret = bDao.insert(playerVO);
+		return ret;	
+	}
+}

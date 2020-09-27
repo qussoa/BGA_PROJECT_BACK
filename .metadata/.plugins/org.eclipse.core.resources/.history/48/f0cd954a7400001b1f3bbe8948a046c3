@@ -1,0 +1,26 @@
+package com.biz.bow.sevice;
+
+import java.util.List;
+
+import com.biz.bow.dao.BowDao;
+import com.biz.bow.domain.PlayerVO;
+
+public class RecordService {
+	
+
+	private BowDao bDao;
+	
+	public List<PlayerVO> selectAll(){
+		return bDao.selectAll();
+	}
+	
+	public PlayerVO findByPlayerName(String playerName) {
+		PlayerVO playerVO = bDao.findPlayerName(playerName);
+		return playerVO;
+	}
+	
+	public PlayerVO insert(PlayerVO playerVO) {
+		playerVO = bDao.insert(playerVO);
+		return playerVO;	
+	}
+}

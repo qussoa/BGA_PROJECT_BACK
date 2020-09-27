@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.biz.bow.dao.BowDao">
+ 
+ 	<select id="selectAll">
+ 		SELECT * FROM T_BOW_GAME
+ 	</select>
+ 	<select id="findPlayerName">
+ 		SELECT * FROM T_BOW_GAME
+ 		WHERE B_NAME LIKE '%' || #{B_NAME} || '%'
+ 	</select>
+ 	<insert id="insert">
+ 		INSERT INTO T_BOW_GAME(
+ 			  B_SEQ
+ 			, B_NAME
+ 			, B_TOT_SCORE
+ 			, B_PLAY_DATE 
+ 		)VALUES(
+ 			  B_SEQ.NEXTVAL
+ 			, #{B_NAME}
+ 			, #{B_TOT_SCORE}
+ 			, SYSDATE
+ 		)
+ 	</insert>
+ 
+ 
+ </mapper> 

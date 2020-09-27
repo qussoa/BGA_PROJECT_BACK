@@ -3,22 +3,32 @@ package com.biz.bow;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.awt.Frame;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import com.biz.bow.sevice.ScoreService;
+import com.biz.bow.domain.PlayerVO;
+import com.biz.bow.service.FrameService;
+import com.biz.bow.service.GameService;
+import com.biz.bow.service.PlayerService;
+import com.biz.bow.service.ScoreService;
 
 public class ScoreTest {
 	
 	private ScoreService nmlFrmScore;
 	private ScoreService fnlFrmScore;
-
+	private ScoreService score;
+	private List<FrameService> frames;
+	
 	@Before
 	public void setUp() {
 		fnlFrmScore = new ScoreService(3);
 		nmlFrmScore = new ScoreService(2);
+		
 	}
 	
 	/*
@@ -32,9 +42,9 @@ public class ScoreTest {
 		fnlFrmScore.setScore(5, 2);
 		fnlFrmScore.setScore(6, 1);
 
-		Field fstShot = fnlFrmScore.getClass().getDeclaredField("fstShot");
-		Field sndShot = fnlFrmScore.getClass().getDeclaredField("sndShot");
-		Field fnlShot = fnlFrmScore.getClass().getDeclaredField("finalShot");
+		Field fstShot = fnlFrmScore.getClass().getDeclaredField("FIRST_SHOT");
+		Field sndShot = fnlFrmScore.getClass().getDeclaredField("SECOND_SHOT");
+		Field fnlShot = fnlFrmScore.getClass().getDeclaredField("FINAL_SHOT");
 		
 		fstShot.setAccessible(true);
 		sndShot.setAccessible(true);
@@ -44,9 +54,9 @@ public class ScoreTest {
 		int resultSnd = (int) sndShot.get(fnlFrmScore);
 		int resultFnl = (int) fnlShot.get(fnlFrmScore);
 		
-		assertThat(resultFst, is(4));
-		assertThat(resultSnd, is(5));
-		assertThat(resultFnl, is(6));
+		assertThat(resultFst, is(0));
+		assertThat(resultSnd, is(1));
+		assertThat(resultFnl, is(2));
 	}
 	
 	@Test
@@ -83,8 +93,8 @@ public class ScoreTest {
 		nmlFrmScore.setScore(5, 2);
 		nmlFrmScore.setScore(6, 1);
 		
-		Field fstShot = nmlFrmScore.getClass().getDeclaredField("fstShot");
-		Field sndShot = nmlFrmScore.getClass().getDeclaredField("sndShot");
+		Field fstShot = nmlFrmScore.getClass().getDeclaredField("FIRST_SHOT");
+		Field sndShot = nmlFrmScore.getClass().getDeclaredField("SECOND_SHOT");
 		
 		fstShot.setAccessible(true);
 		sndShot.setAccessible(true);
@@ -92,10 +102,67 @@ public class ScoreTest {
 		int resultFst = (int) fstShot.get(nmlFrmScore);
 		int resultSnd = (int) sndShot.get(nmlFrmScore);
 		
-		assertThat(resultFst, is(5));
-		assertThat(resultSnd, is(6));
+		assertThat(resultFst, is(0));
+		assertThat(resultSnd, is(1));
 	}
 	
+	@Test
+	public void 모든_점수가_스트라이크일때() {
+		
+		// 플레이어 이름 설정부분
+		PlayerService player = new PlayerService("test");
+		
+		// 게임서비스를 초기화하고 플레이어 정보를 담음
+		GameService game = new GameService(player);
+		
+		List<Object> inputScoreList = new ArrayList<>();
+		for (int i = 0; i < 10; i++) {
+			if(i<9) {
+				List<Integer> turnScore = new ArrayList<>();
+				turnScore.add(10);
+				turnScore.add(0);
+				inputScoreList.add(turnScore);
+			}else {
+				List<Integer> turnScore = new ArrayList<>();
+				turnScore.add(10);
+				turnScore.add(10);
+				turnScore.add(10);
+				inputScoreList.add(turnScore);
+			}
+		}
+	
+		PlayerVO playerVO = game.startGame(inputScoreList);
+		assertThat(playerVO.getTotalScore(),is(300));
+		
+	}
+	
+	@Test
+	public void 모든_점수가_스페어일_경우() {
+		// 플레이어 이름 설정부분
+		PlayerService player = new PlayerService("test");
+		
+		// 게임서비스를 초기화하고 플레이어 정보를 담음
+		GameService game = new GameService(player);
+		
+		List<Object> inputScoreList = new ArrayList<>();
+		for (int i = 0; i < 10; i++) {
+			if(i<9) {
+				List<Integer> turnScore = new ArrayList<>();
+				turnScore.add(5);
+				turnScore.add(5);
+				inputScoreList.add(turnScore);
+			}else {
+				List<Integer> turnScore = new ArrayList<>();
+				turnScore.add(5);
+				turnScore.add(5);
+				turnScore.add(5);
+				inputScoreList.add(turnScore);
+			}
+		}
+	
+		PlayerVO playerVO = game.startGame(inputScoreList);
+		assertThat(playerVO.getTotalScore(),is(145));
+	}
 
 }
 

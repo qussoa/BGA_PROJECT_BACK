@@ -1,0 +1,9 @@
+package com.biz.bow.domain;
+
+public class RankVO {
+	
+	private String bName;
+	private int bTotScore;
+	private String bPlayDate;
+	
+}

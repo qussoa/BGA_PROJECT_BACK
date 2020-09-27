@@ -6,7 +6,7 @@ import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.biz.bow.sevice.FinalFrameServiceImpl;
+import com.biz.bow.service.FinalFrameServiceImpl;
 
 public class FrameTest {
 	

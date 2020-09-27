@@ -1,0 +1,84 @@
+package com.biz.bow.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import javax.swing.plaf.synth.SynthSplitPaneUI;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.biz.bow.domain.FrameVO;
+import com.biz.bow.domain.PlayerVO;
+import com.biz.bow.sevice.GameService;
+import com.biz.bow.sevice.PlayerService;
+import com.biz.bow.sevice.RecordService;
+
+import lombok.Getter;
+
+
+// 리엑트의 주소와 스프링에서의 주소를 호환해줄 Annotation
+@CrossOrigin("*")
+/*
+ * 1. Client는 URI 형식으로 웹 서비스에 요청을 보낸다.
+ * 2. Mapping되는 Handler와 그 Type을 찾는 DispatcherServlet이 요청을 인터셉트한다.
+ * 3. RestController는 해당 요청을 처리하고 데이터를 반환한다.
+ */
+// Json 형태로 객체 데이터를 반환
+@RestController
+public class BwgController {
+
+	
+	// 리엑트에서 받은 데이터를 파싱해서 받는 부분
+	@RequestMapping(value = "/start", method = RequestMethod.POST)
+	public PlayerVO bowling(@RequestBody Map<String, Object> params) {
+		
+		/*
+		 * list{
+		 * 	 [0,1]
+		 * }
+		 * 이차원 배열을 오브젝트 리스트에 담아
+		 * json 파일에 있는 list 안의 배열을 한번더 꺼내는 부분
+		 */
+		List<Object> inputScore = (List<Object>) params.get("list");
+		
+		String name = (String) params.get("name");
+		
+		// 플레이어 이름 설정부분
+		PlayerService player = new PlayerService(name);
+		
+		// 게임서비스를 초기화하고 플레이어 정보를 담음
+		GameService game = new GameService(player);
+		
+		// json으로 받은 데이터를 로직에 담아 계산을 함
+		PlayerVO playerVO = game.startGame(inputScore);
+		
+		System.out.println(playerVO.toString());
+		
+//		rService.insert(playerVO);
+
+		// 수신이 잘되었으면 200과 함께 ok를 받음 
+		return playerVO;
+	}
+	
+	@RequestMapping(value="random",method=RequestMethod.POST)
+	public PlayerVO random(@RequestBody Map<String, Object> params) {
+		
+		String name = (String) params.get("name");
+		PlayerService player = new PlayerService(name);
+		GameService game = new GameService(player);
+		PlayerVO playerVO = game.startGame();
+		
+		System.out.println(playerVO.toString());
+		
+//		rService.insert(playerVO);
+		
+		return playerVO;
+	}
+	
+}

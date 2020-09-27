@@ -9,5 +9,6 @@ public class PlayerVO {
 
 	private String name;
 	private List<FrameVO> frameList;
+	private int totalScore;
 
 }

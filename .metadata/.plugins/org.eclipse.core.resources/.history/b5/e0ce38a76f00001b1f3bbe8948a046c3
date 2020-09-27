@@ -1,0 +1,117 @@
+package com.biz.bow.sevice;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.biz.bow.dao.BowDao;
+import com.biz.bow.domain.FrameVO;
+import com.biz.bow.domain.PlayerVO;
+
+public class ViewService {
+
+	// 웹으로 보여주는 곳
+
+	// 콘솔창으로 확인할때
+	public static final String STRIKE = "X";
+	public static final String SPAIRE = " / ";
+	public static final String GUTTER = " - ";
+
+	private static final int FINAL_FRAME = 10;
+
+	private String round;
+	private String score;
+	private String totalScore;
+	private ResultScoreService resultScore;
+	private PlayerVO playerVO;
+
+	
+	public ViewService() {
+		round = "";
+		score = "";
+		totalScore = "";
+		resultScore = new ResultScoreService();
+		playerVO = new PlayerVO();
+		
+	}
+
+	// 계산로직이 실행이되고 결과값을 VO에 담는 부분
+	public PlayerVO showBowGame(List<FrameService> frames, PlayerService player) {
+		// 플레이어의 점수를 넣어주기전 초기화
+		playerVO.setFrameList(new ArrayList<FrameVO>());
+		// 플레이어 서비스에 있는 이르을 플레이어의 VO에 담는 부분
+		playerVO.setName(player.getName());
+		// 플레임 리스트를 사이즈만큼 돌리고 프레임의 점수들을 가져와 
+		// 노말일경우와 파이널 프레임일 경우를 찾아 계산
+		for (int i = 0; i < frames.size(); i++) {
+			
+			// 점수를 담을 프레임VO 초기화
+			FrameVO frameVO = new FrameVO();
+			// 프레임 서비스를 생성하고 리스트에 담겨있는 점수를 넣어줌
+			FrameService frame = frames.get(i);
+			
+			// 콘솔에서 보여줄 라운드 1FRAME
+			setRound(frame.getFramenumber());
+			
+			// 플레이어VO에 프레임 브이오에 담긴 점수들을 담기
+			playerVO.getFrameList().add(frameVO);
+			
+			// 결과 총 점수를 계산
+			resultScore.calTotalScore(frame.getScore());
+
+			// 스트라이크나 스페어 처리가  
+			if (frame.getState() != "NOMAL") {
+				if(i < 8) {
+					resultScore.calScoreWithNextFrame(frame.getState(), frames.get(i),frames.get(i + 1), frames.get(i + 2));
+				} else if (i == 8) {
+					resultScore.calNineScoreWithNextFrame(frame.getState(), frames.get(i+1));
+				}
+			}
+			setScore(frame.getScore(), frame.getState());
+			
+			frameVO.setTurnScore(frame.getScore());
+			frameVO.setState(frame.getState());
+			frameVO.setFrameScore(resultScore.getTotalScore());
+
+			setTotalScore(resultScore.getTotalScore());
+		}
+
+		System.out.println("Player : " + player.getName());
+		System.out.println(round);
+		System.out.println(score);
+		System.out.println(totalScore);
+
+		return playerVO;
+	}
+
+	// 콘솔에서 스트라이크일때 x 스페어일때 / 거터일때- 표시 해주는 부분
+	private void setScore(int[] scores, String state) {
+		for (int i = 0; i < scores.length; i++) {
+			String convertScore = String.valueOf(scores[i]);
+
+			if (scores[i] == 0) {
+				convertScore = GUTTER;
+			}
+			if (state.equals("STRIKE") && i == 0) {
+				convertScore = STRIKE;
+			}
+
+			if (state.equals("SPAIRE") && i == scores.length - 1) {
+				convertScore = SPAIRE;
+			}
+
+			score += convertScore + "\t";
+		}
+		score += "||\t";
+	}
+
+	private void setTotalScore(int totalScore) {
+		this.totalScore += totalScore + "\t\t||      ";
+	}
+
+	private void setRound(int frameNum) {
+		String thisRound = frameNum + " FRAME\t\t|| ";
+
+		round += thisRound;
+		round.trim();
+	}
+}

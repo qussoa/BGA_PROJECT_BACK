@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 
 import org.junit.Test;
 
-import com.biz.bow.sevice.PinsService;
+import com.biz.bow.service.PinsService;
 
 public class PinsTest {
 

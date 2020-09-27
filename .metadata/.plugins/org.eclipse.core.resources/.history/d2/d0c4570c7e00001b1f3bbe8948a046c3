@@ -1,0 +1,98 @@
+package com.biz.bow.sevice;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.biz.bow.domain.PlayerVO;
+
+@Service
+public class GameService {
+	// game 흐름 파악
+	
+
+	
+	private static final int FINAL_FRAME = 10;
+	
+	// 플레이어 정보를 담은 서비스를 호출
+	private PlayerService player;
+	// 프레임의 점수와 상태를 담을 리스트 생성
+	private List<FrameService> frames;
+	// 콘솔에서 보여질 ViewService 호출
+	private ViewService view;
+	
+	// 초기화하는 부분
+	public GameService(PlayerService player) {
+		this.player = player;
+		view = new ViewService();
+		frames = new ArrayList<FrameService>();
+		setFrames();
+	}
+
+	// 서버에서 받아온 데이터를 점수 로직으로 돌리는 부분
+	public PlayerVO startGame(List<Object> inputScore) {
+
+		// 프레임 서비스의 사이즈만큼 i번 돌림
+		for (int i = 0; i < frames.size(); i++) {
+			// 받아온 점수를 턴스코어에 리스트로 담기
+			List<Integer> turnScore = (List<Integer>) inputScore.get(i);
+			// 프레임에 턴스코를 세팅
+			setPlayGameScore(frames.get(i),turnScore);
+		}
+		
+		return view.showBowGame(frames, player);
+	}
+	
+	public PlayerVO startGame() {
+		for(FrameService frame : frames) {
+			playGame(frame);
+		}
+		return view.showBowGame(frames, player);
+	}
+	
+	// 랜덤으로 돌린 점수를 세팅
+	private void playGame(FrameService frame) {
+		// 랜덤으로 핀을 만들어준 서비스 생성 및 초기화
+		PinsService pin = new PinsService();
+		// 프레임의 플레이어 턴만큼 반복
+		while(frame.playerTurn()) {
+			// 랜덤으로 돌린 핀의 갯수를 핀 pinCnt에 담기
+			int pinCnt = pin.rollingBall();
+			// 프레임의 점수와 턴을 세팅하는 프레임서비스의 playBow에 담기
+			frame.playBow(pinCnt);
+		}
+		// 턴이 끝나면 핀 갯수를 10개로 초기화
+		pin.resetPin();
+	}
+	
+	// 서버에서 받아온 inputScore를  프레임서비스에 턴만큼 돌려 playBow 메서드에 담아 점수 담기 
+	private void setPlayGameScore(FrameService frame, List<Integer> inputScore) {
+		// 랜덤이 아닌 서버에서 주어진 점수들을 세어줄 부분을 초기화
+		int index = 0;
+		// 플레이어 턴만큼 반복
+		while(frame.playerTurn()) {
+			//inputScore에서 가져온 점수를 pinCnt 담기
+			int pinCnt = inputScore.get(index);
+			// playBow에 담아 점수 세팅
+			frame.playBow(pinCnt);
+			// inputScore를 다 돌려 인덱스 값을 증가 시킴
+			index++;
+		}
+	}
+	
+	// 1~9까지의 nomal 프레임을 경우와 final 프레임일 경우를 구분
+	private void setFrames() {
+		// 10개를 가진 프레임을 반복문을 통해 10번 돌림
+		for(int i = 1; i<=FINAL_FRAME; i++) {
+			// 만약 i 번째 프레임이 10일 경우
+			if(i == FINAL_FRAME) {
+				// 프레임 리스트에 파이널 프레임 서비스를 호출하고 담음
+				frames.add(new FinalFrameServiceImpl(i));
+				return;
+			}
+			// 보통의 프레임일 경우 노말 프레임 서비스를 호출하여 프레임 리스트에 담음
+			frames.add(new NmlFrameServiveImpl(i));
+		}
+	}
+}

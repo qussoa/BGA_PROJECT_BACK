@@ -6,8 +6,8 @@ import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.biz.bow.sevice.FrameService;
-import com.biz.bow.sevice.NmlFrameServiveImpl;
+import com.biz.bow.service.FrameService;
+import com.biz.bow.service.NmlFrameServiveImpl;
 
 public class NomalFrameTest {
 	
@@ -15,7 +15,7 @@ public class NomalFrameTest {
 	
 	@Before
 	public void setUp() {
-	//	nmlFrame = new NmlFrameServiveImpl();
+		nmlFrame = new NmlFrameServiveImpl(1);
 	}
 	
 
